@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 
-function Movies() {
+function Recommends() {
   return (
     <Container>
         <h4>Recommended for you</h4>
@@ -36,7 +36,7 @@ function Movies() {
   )
 }
 
-export default Movies
+export default Recommends
 
 const Container = styled.div`
        

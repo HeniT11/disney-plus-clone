@@ -1,15 +1,32 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components'
 import ImgSlider from './ImgSlider'
 import Viewers from './Viewers'
-import Movies from './Movies'
+import Recommends from './Recommends'
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
+// import NewDisney from './NewDisney'
+// import Originals from './Originals'
+// import Trending from './Trending'
 
 function Home() {
+  useEffect(() => {
+
+    const movies = async () => {
+      const data = await getDocs(collection(db, "movies"));
+     console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    movies();
+  });
+
   return (
     <Container>
         <ImgSlider />
         <Viewers />
-        <Movies />
+        <Recommends />
+        {/* <NewDisney />
+        <Originals />
+        <Trending /> */}
     </Container>
   )
 }
